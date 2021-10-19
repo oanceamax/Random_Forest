@@ -56,9 +56,17 @@ rfc_final.fit(x,y)
 
 
 df_test2 = df_test.drop("in_sf",axis=1)
+rfc_final.predict(x_test)
+
+comparison = []
+for i in rfc_final.predict(x_test):
+    y_test.iloc[i] == rfc_final.predict(x_test)[i]
+    comparison.append(y_test.iloc[i] == rfc_final.predict(x_test)[i])
+print( comparison )
 
 rfc_final.predict(df_test2)
 
+# The values for the test array that go through coincides with the predictions for that group as seen in the above test.
 # After running the final test with data that the model has not seen the predictions are wrong, it fits to the second category, apartemnts from San Francisco and it shold be half for each category
 #array([1, 1, 1, 1, 1, 0, 1, 1, 1, 1], dtype=int64)
 #futher parameter calibration is needed 
